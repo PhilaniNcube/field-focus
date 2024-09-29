@@ -4,11 +4,15 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { MapPin } from "lucide-react";
 import { Doc } from "../../../../../../convex/_generated/dataModel";
+import Link from "next/link";
 
-
-export default function FarmAreasCard({ farmAreas }: { farmAreas: Doc<"farm_areas">[] }) {
+export default function FarmAreasCard({
+  farmAreas,
+}: {
+  farmAreas: Doc<"farm_areas">[];
+}) {
   return (
-    <Card className="w-full max-w-3xl mx-auto">
+    <Card className="w-full max-w-4xl">
       <CardHeader>
         <CardTitle className="flex items-center gap-2 text-2xl">
           <MapPin className="h-6 w-6" />
@@ -16,10 +20,15 @@ export default function FarmAreasCard({ farmAreas }: { farmAreas: Doc<"farm_area
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <ul className="space-y-4">
+        <div className="space-y-4">
           {farmAreas.map((area, index) => (
-            <li key={area._id}>
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+            <Link
+              href={`/dashboard/${area.farm_id}/farm-areas/${area._id}`}
+              key={area._id}
+              prefetch={false}
+              className="hover:bg-slate-100 cursor-pointer"
+            >
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2 py-2 ">
                 <h3 className="text-lg font-semibold">{area.name}</h3>
                 <Badge variant="secondary" className="w-fit">
                   {area.size} hectares
@@ -29,9 +38,9 @@ export default function FarmAreasCard({ farmAreas }: { farmAreas: Doc<"farm_area
                 {area.description}
               </p>
               {index < farmAreas.length - 1 && <Separator className="mt-4" />}
-            </li>
+            </Link>
           ))}
-        </ul>
+        </div>
       </CardContent>
     </Card>
   );

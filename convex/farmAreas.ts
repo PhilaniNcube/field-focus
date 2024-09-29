@@ -15,10 +15,10 @@ export const getFarmAreas = query({
 
 export const getFarmArea = query({
   args: {
-    farmId: v.id("farm_areas"),
+    areaId: v.id("farm_areas"),
   },
   handler: async (ctx, args) => {
-    return await ctx.db.get(args.farmId);
+    return await ctx.db.query("farm_areas").filter((q) => q.eq(q.field("_id"), args.areaId)).first();
   },
 })
 
