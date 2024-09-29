@@ -7,7 +7,14 @@ export const getCrops = query({
   },
   handler: async (ctx, args) => {
     const crops = await ctx.db.query("crops").filter((q) => q.eq(q.field("farm_id"), args.farmId)).collect();
-    return crops;
+
+    const cropsWithArea = await Promise.all(crops.map(async (crop) => {
+      const area = await ctx.db.query("farm_areas").filter((q) => q.eq(q.field("_id"), crop.area)).first();
+      return {...crop, area};
+    }));
+
+    return cropsWithArea;
+
   },
 });
 
