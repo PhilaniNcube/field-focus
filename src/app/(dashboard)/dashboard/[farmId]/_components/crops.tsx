@@ -1,9 +1,8 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Doc } from "../../../../../../convex/_generated/dataModel";
+import Link from "next/link";
 
 const CropsList = ({ crops }: { crops: Doc<"crops">[] }) => {
-
-  console.log(crops);
 
   return (
     <Card>
@@ -11,13 +10,13 @@ const CropsList = ({ crops }: { crops: Doc<"crops">[] }) => {
         <CardTitle className="text-2xl text-slate-800">Crops</CardTitle>
       </CardHeader>
       <CardContent>
-        <ul>
+        <div className="grid gap-y-2">
           {crops.map((crop) => (
-            <li className="border-b-2" key={crop._id}>
+            <Link href={`/dashboard/${crop.farm_id}/crops/${crop._id}`} className="bg-zinc-200 p-2 rounded hover:cursor-pointer hover:bg-zinc-100" key={crop._id}>
               {crop.name}
-            </li>
+            </Link>
           ))}
-        </ul>
+        </div>
       </CardContent>
     </Card>
   );

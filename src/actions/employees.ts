@@ -61,7 +61,8 @@ export const addEmployeeAction = async (prevState:unknown, formData:FormData) =>
     active: validatedFields.data.active,
   })
 
-    revalidatePath(`/dashboard/${validatedFields.data.farm_id}`);
+    revalidatePath(`/dashboard/${validatedFields.data.farm_id}`, "layout");
+    revalidatePath(`/dashboard/${validatedFields.data.farm_id}/employees`, "layout");
 
   return {
     status: "success",

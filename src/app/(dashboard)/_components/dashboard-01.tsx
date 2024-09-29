@@ -16,48 +16,54 @@ import {
 import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { ReactNode } from "react";
+import { useParams } from "next/navigation";
 
 export function FarmDashboard({ children }: { children: ReactNode }) {
+
+const {farmId} = useParams()
+
+
+
   return (
     <div className="flex min-h-screen w-full flex-col bg-white">
       <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-white px-4 md:px-6">
-        <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
+        <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6 w-full">
           <Link
-            href="#"
+            href={`/dashboard/${farmId}`}
             className="flex items-center gap-2 text-lg font-semibold md:text-base"
           >
             <Package2 className="h-6 w-6" />
-            <span className="sr-only">Acme Inc</span>
+            <span className="sr-only">Field Focus</span>
           </Link>
           <Link
-            href="#"
-            className="text-foreground transition-colors hover:text-foreground"
-          >
-            Dashboard
-          </Link>
-          <Link
-            href="#"
+            href={`/dashboard/${farmId}/employees`}
             className="text-muted-foreground transition-colors hover:text-foreground"
           >
-            Orders
+            Employees
           </Link>
           <Link
-            href="#"
+            href={`/dashboard/${farmId}/farm-areas`}
             className="text-muted-foreground transition-colors hover:text-foreground"
           >
-            Products
+            Farm Areas
           </Link>
           <Link
-            href="#"
+            href={`/dashboard/${farmId}/crops`}
+            className="text-muted-foreground transition-colors hover:text-foreground"
+          >
+            Crops
+          </Link>
+          <Link
+            href={`/dashboard/${farmId}/customers`}
             className="text-muted-foreground transition-colors hover:text-foreground"
           >
             Customers
           </Link>
           <Link
-            href="#"
+            href={`/dashboard/${farmId}/sales`}
             className="text-muted-foreground transition-colors hover:text-foreground"
           >
-            Analytics
+            Sales
           </Link>
         </nav>
         <Sheet>
@@ -74,38 +80,41 @@ export function FarmDashboard({ children }: { children: ReactNode }) {
           <SheetContent side="left">
             <nav className="grid gap-6 text-lg font-medium">
               <Link
-                href="#"
+                href={`/dashboard/${farmId}`}
                 className="flex items-center gap-2 text-lg font-semibold"
               >
                 <Package2 className="h-6 w-6" />
-                <span className="sr-only">Acme Inc</span>
-              </Link>
-              <Link href="#" className="hover:text-foreground">
-                Dashboard
+                <span className="sr-only">Field Focus</span>
               </Link>
               <Link
-                href="#"
+                href={`/dashboard/${farmId}/employees`}
                 className="text-muted-foreground hover:text-foreground"
               >
-                Orders
+                Employees
               </Link>
               <Link
-                href="#"
+                href={`/dashboard/${farmId}/farm-areas`}
                 className="text-muted-foreground hover:text-foreground"
               >
-                Products
+                Farm Areas
               </Link>
               <Link
-                href="#"
+                href={`/dashboard/${farmId}/crops`}
+                className="text-muted-foreground hover:text-foreground"
+              >
+                Crops
+              </Link>
+              <Link
+                href={`/dashboard/${farmId}/customers`}
                 className="text-muted-foreground hover:text-foreground"
               >
                 Customers
               </Link>
               <Link
-                href="#"
+                href={`/dashboard/${farmId}/sales`}
                 className="text-muted-foreground hover:text-foreground"
               >
-                Analytics
+                Sales
               </Link>
             </nav>
           </SheetContent>

@@ -2,9 +2,11 @@ import { v } from "convex/values";
 import { mutation, query } from "./_generated/server";
 
 export const getEmployees = query({
-  args: {},
-  handler: async (ctx) => {
-    return await ctx.db.query("employees").collect();
+  args: {
+    farm_id: v.id("farm"),
+  },
+  handler: async (ctx, args) => {
+    return await ctx.db.query("employees").filter((q) => q.eq(q.field("farm_id"), args.farm_id)).collect();
   },
 });
 

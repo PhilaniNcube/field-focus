@@ -6,6 +6,8 @@ import AddFarmAreaModal from "../_components/add-farm-area-modal";
 import AddEmployeeModal from "../_components/add-employee-modal";
 import AddCropModal from "../_components/add-crop";
 import CropsList from "./_components/crops";
+import FarmAreasCard from "./_components/farm-areas";
+import EmployeesCard from "./_components/employees-card";
 
 const page = async ({
   params: { farmId },
@@ -24,12 +26,14 @@ const page = async ({
   return (
     <div className="">
       <FarmHeader name={farm.name} location={farm.location} size={farm.size} />
-      <div className="flex gap-x-3">
+      <div className="flex md:gap-x-3 md:flex-row flex-col gap-y-2">
         <AddFarmAreaModal farmId={farmId} />
         <AddEmployeeModal farmId={farmId} />
         <AddCropModal farmId={farmId} areas={farmAreas} />
       </div>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+        <FarmAreasCard farmAreas={farmAreas} />
+        <EmployeesCard farmId={farmId} />
         <CropsList crops={crops} />
       </div>
     </div>
