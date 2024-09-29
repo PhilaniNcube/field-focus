@@ -10,6 +10,17 @@ export const getEmployees = query({
   },
 });
 
+
+export const getEmployee = query({
+  args: {
+    id: v.id("employees"),
+  },
+  handler: async (ctx, args) => {
+    return await ctx.db.query("employees").filter((q) => q.eq(q.field("_id"), args.id)).first();
+  },
+});
+
+
 export const addEmployee = mutation({
   args: {
     first_name: v.string(),

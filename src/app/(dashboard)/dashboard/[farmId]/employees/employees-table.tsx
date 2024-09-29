@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import {
   Table,
@@ -12,14 +14,18 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Users, Mail, Phone, MapPin } from "lucide-react";
 import { Doc } from "../../../../../../convex/_generated/dataModel";
 import { cn } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 
 export default function EmployeesTable({
   employees,
 }: {
   employees: Doc<"employees">[];
 }) {
+
+  const router = useRouter();
+
   return (
-    <Card className="w-full max-w-6xl mt-4">
+    <Card className="w-full  mt-4">
       <CardHeader>
         <CardTitle className="flex items-center gap-2 text-2xl">
           <Users className="h-6 w-6" />
@@ -40,7 +46,7 @@ export default function EmployeesTable({
             </TableHeader>
             <TableBody>
               {employees.map((employee) => (
-                <TableRow key={employee._id}>
+                <TableRow onClick={() => router.push(`/dashboard/${employee.farm_id}/employees/${employee._id}`)} key={employee._id} className="cursor-pointer">
                   <TableCell className="font-medium">
                     {employee.first_name} {employee.last_name}
                   </TableCell>

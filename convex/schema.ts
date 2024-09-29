@@ -36,6 +36,7 @@ export default defineSchema({
       v.literal("contractor")
     ),
     active: v.boolean(),
+    position: v.optional(v.string()),
   }),
   employee_wages: defineTable({
     farm_id: v.id("farm"),
