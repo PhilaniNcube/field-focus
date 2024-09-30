@@ -30,14 +30,11 @@ const ProfileLayout = async ({ children }: { children: ReactNode }) => {
                 src="/placeholder.svg?height=80&width=80"
                 alt="Farm logo"
               />
-              <AvatarFallback>GF</AvatarFallback>
+              <AvatarFallback>{user.first_name && user.first_name[0]}</AvatarFallback>
             </Avatar>
             <div>
               <h1 className="text-md font-bold">{user.first_name} {user.last_name}</h1>
-              <p className="text-muted-foreground text-sm flex items-center">
-                <MapPin className="mr-1 h-4 w-4" />
-                Heartland, USA
-              </p>
+
             </div>
           </div>
           <Link href="/">

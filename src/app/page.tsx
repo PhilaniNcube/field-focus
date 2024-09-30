@@ -35,13 +35,13 @@ export default function LandingPage() {
           </nav>
           <div className="flex items-center space-x-4">
             <SignedIn>
+              <Link href="/profile">
+                <Button variant="ghost">
+                  Profile
+                </Button>
+                </Link>
               <UserButton />
-              <Button
-                variant="outline"
-                className="hidden md:inline-flex text-black border-white hover:bg-gray-800"
-              >
-                <SignOutButton />
-              </Button>
+
             </SignedIn>
             <SignedOut>
               <Link href="/sign-up">
