@@ -8,6 +8,7 @@ import AddCropModal from "../_components/add-crop";
 import CropsList from "./_components/crops";
 import FarmAreasCard from "./_components/farm-areas";
 import EmployeesCard from "./_components/employees-card";
+import AddLivestock from "../_components/add-livestock";
 
 const page = async ({
   params: { farmId },
@@ -34,6 +35,7 @@ if (!farm || !farmAreas) {
         <AddFarmAreaModal farmId={farmId} />
         <AddEmployeeModal farmId={farmId} />
         <AddCropModal farmId={farmId} areas={farmAreas} />
+        <AddLivestock farmId={farmId} areas={farmAreas} />
       </div>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
         <FarmAreasCard farmAreas={farmAreas} />

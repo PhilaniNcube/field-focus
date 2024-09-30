@@ -19,6 +19,7 @@ import type * as crops from "../crops.js";
 import type * as employees from "../employees.js";
 import type * as farm from "../farm.js";
 import type * as farmAreas from "../farmAreas.js";
+import type * as livestock from "../livestock.js";
 import type * as users from "../users.js";
 
 /**
@@ -34,6 +35,7 @@ declare const fullApi: ApiFromModules<{
   employees: typeof employees;
   farm: typeof farm;
   farmAreas: typeof farmAreas;
+  livestock: typeof livestock;
   users: typeof users;
 }>;
 export declare const api: FilterApi<
