@@ -54,6 +54,12 @@ const {farmId} = useParams()
             Crops
           </Link>
           <Link
+            href={`/dashboard/${farmId}/livestock`}
+            className="text-muted-foreground transition-colors hover:text-foreground"
+          >
+            Livestock
+          </Link>
+          <Link
             href={`/dashboard/${farmId}/customers`}
             className="text-muted-foreground transition-colors hover:text-foreground"
           >
@@ -103,6 +109,12 @@ const {farmId} = useParams()
                 className="text-muted-foreground hover:text-foreground"
               >
                 Crops
+              </Link>
+              <Link
+                href={`/dashboard/${farmId}/livestock`}
+                className="text-muted-foreground hover:text-foreground"
+              >
+                Livestock
               </Link>
               <Link
                 href={`/dashboard/${farmId}/customers`}

@@ -15,13 +15,17 @@ const page = async ({
   params: { farmId: Id<"farm"> };
 }) => {
 
-  const farm = await fetchQuery(api.farm.getFarm, { farmId: farmId });
-  const farmAreas = await fetchQuery(api.farmAreas.getFarmAreas, { farmId: farmId });
-  const crops = await fetchQuery(api.crops.getCrops, { farmId: farmId });
 
-  if (!farm) {
-    return null;
-  }
+
+  const farmData =  fetchQuery(api.farm.getFarm, { farmId: farmId });
+  const farmAreasData =  fetchQuery(api.farmAreas.getFarmAreas, { farmId: farmId });
+
+
+ const [farm, farmAreas ] = await Promise.all([farmData, farmAreasData]);
+
+if (!farm || !farmAreas) {
+  return null;
+}
 
   return (
     <div className="">
@@ -34,7 +38,7 @@ const page = async ({
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
         <FarmAreasCard farmAreas={farmAreas} />
         <EmployeesCard farmId={farmId} />
-        <CropsList crops={crops} />
+        <CropsList farmId={farmId} />
       </div>
     </div>
   );

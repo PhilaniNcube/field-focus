@@ -1,8 +1,12 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Doc } from "../../../../../../convex/_generated/dataModel";
+import { Doc, Id } from "../../../../../../convex/_generated/dataModel";
 import Link from "next/link";
+import { fetchQuery } from "convex/nextjs";
+import { api } from "../../../../../../convex/_generated/api";
 
-const CropsList = ({ crops }: { crops: Doc<"crops">[] }) => {
+const CropsList = async ({ farmId }: { farmId: Id<"farm"> }) => {
+
+    const crops = await fetchQuery(api.crops.getCrops, { farmId: farmId });
 
   return (
     <Card>
