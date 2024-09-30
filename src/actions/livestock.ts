@@ -4,6 +4,7 @@ import { fetchMutation } from "convex/nextjs";
 import { z } from "zod";
 import { api } from "../../convex/_generated/api";
 import { Id } from "../../convex/_generated/dataModel";
+import { revalidatePath } from "next/cache";
 
 const AddLivestockSchema = z.object({
   farm_id: z.string(),
@@ -35,9 +36,12 @@ export async function createLivestockAction(prevState:unknown, formData:FormData
     description: data.data.description,
   })
 
+  revalidatePath(`/dashboard/${data.data.farm_id}/livestock`);
+
   return {
     status: "success",
     result: result,
+    message: "Livestock added successfully",
   }
 
 

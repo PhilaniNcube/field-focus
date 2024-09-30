@@ -35,10 +35,10 @@ const AddLivestockSchema = z.object({
 
 const AddLivestock = ({
   farmId,
-  areas,
+
 }: {
   farmId: Id<"farm">;
-  areas: Doc<"farm_areas">[];
+
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [state, formAction] = useFormState(createLivestockAction, null);
@@ -110,7 +110,7 @@ const AddLivestock = ({
                   htmlFor="quantity"
                   className="font-medium text-slate-600"
                 >
-                  quantity
+                  Quantity
                 </FormLabel>
                 <FormControl>
                   <FormField
@@ -153,7 +153,7 @@ const AddLivestock = ({
             </FormItem>
             <Separator className="my-3" />
           </Form>
-          <Separator className="mt-4" />
+
           <SubmitButton className="mt-4">Save</SubmitButton>
         </form>
       </DialogContent>

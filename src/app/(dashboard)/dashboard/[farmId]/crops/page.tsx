@@ -20,7 +20,7 @@ const CropsPage = async ({params:{farmId}}:{params:{farmId:Id<"farm">}}) => {
   const crops = await fetchQuery(api.crops.getCrops, {farmId})
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container py-4">
       <Card className="w-full max-w-4xl ">
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-2xl">
